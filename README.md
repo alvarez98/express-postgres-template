@@ -1,42 +1,58 @@
-# Name Project
+# Express Postgres Template
 
-One Paragraph of project description goes here. This is a template for organization repositories, set your own stuff.
+Template for developing an API with Express and PostgreSQL
 
 ## Getting Started :arrow_forward:
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites :clipboard:
+### Prerequisites
 
-What things you need to install the software and how to install them
+You need to install these packages
 
-```
-Give examples
-```
+- [Node y Npm](https://nodejs.org/es/)
+- [Docker](https://www.docker.com/)
+- [Docker-Compose](https://docs.docker.com/compose/)
 
-### Installing :arrow_down:
+### Configuration
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-
+Set your configuration in your `.env` files depending on the case, based on the `.env.example` file:
+- Development configuration: `.env`
+- Test configuration: `.env.test`
+- Production configuration: `.env.production`
 ## Deployment :package:
 
-Add additional notes about how to deploy this on a live system
+### Locally
+ 
+1. Install dependencies:
+```sh
+$ npm i 
+```
 
+2. Comment the api service in the `docker-compose.yml` file
+
+3. Run db and adminer(optional) containers with:
+```sh
+$ docker-compose up -d # -d: detach
+```
+4. Run migrations and seeders: <br>
+`environment` can take the value: development | test | production
+
+```sh
+# Migrations
+$ npm run db:migrate --env={environment}
+
+# Seeders
+$ npm run db:seed --env={environment}
+```
+5. Run api or tests:
+```sh
+# API
+$ npm start
+
+# Tests
+$ npm run test
+```
 ## Built With :hammer_and_wrench:
 
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used

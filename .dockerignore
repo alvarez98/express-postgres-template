@@ -1,0 +1,6 @@
+node_modules
+LICENSE
+.gitignore
+docker*
+README.md
+request.http
