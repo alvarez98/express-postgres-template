@@ -1,5 +1,4 @@
-const Keys = require('../../config/keys')
-const Configuration = require('../../config/index')
+const { Configuration, Keys } = require('../../config')
 
 module.exports = {
   development: {

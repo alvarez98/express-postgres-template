@@ -35,6 +35,7 @@ $ npm i
 ```sh
 $ docker-compose up -d # -d: detach
 ```
+
 4. Run migrations and seeders: <br>
 `environment` can take the value: development | test | production
 
@@ -45,7 +46,8 @@ $ npm run db:migrate --env={environment}
 # Seeders
 $ npm run db:seed --env={environment}
 ```
-5. Run api or tests:
+5. Run api or tests: <br>
+Change `DB_HOST` in env file to `localhost`
 ```sh
 # API
 $ npm start
@@ -53,11 +55,32 @@ $ npm start
 # Tests
 $ npm run test
 ```
+### On docker compose
+
+* Run api: <br>
+Change `DB_HOST` in env file to {postgres db name}-db
+```sh
+$ docker-compose up # -d: detach
+```
+
+* Run tests:
+1. In `docker-compose.yml` file, change env value to test in lines 16 & 17
+
+2. In `docker-compose.yml` file, change command to `npm run test` in line 18
+```sh
+$ docker-compose up
+```
+## Other commands
+
+Create new models with:
+```sh
+$ npm run db:model:generate --name {model-name} --atributes {column}:{data-type},{column}:{data-type}
+```
 ## Built With :hammer_and_wrench:
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+- [Node](https://nodejs.org/es/)
+    * [Express](https://expressjs.com/)
+- [Sequelize](https://sequelize.org/)
 
 ## Contributing :family_man_man_boy:
 
@@ -65,9 +88,7 @@ Please read [CONTRIBUTING.md](https://www.aaaimx.org/cod) for details on our cod
 
 ## Versioning :triangular_flag_on_post:
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Future work :rocket:
+- [v1.0.0](https://github.com/alvarez98/e-learning-system/tree/v1.0.0)
 
 ## Contributors :family_man_man_boy:
 
@@ -79,7 +100,10 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## References :link:
 
-1. 
+1. [Sequelize-Cli](https://github.com/sequelize/cli)
+2. [Sequelize](https://sequelize.org/master/index.html)
+3. [Express](https://expressjs.com/)
+4. [Swagger](https://swagger.io/specification/)
 
 ## License :page_facing_up:
 
