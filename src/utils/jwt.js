@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken')
 const { Configuration, Keys } = require('../config')
-const SECRET = Configuration.get(Keys.JWT_SECRET)
 
 /**
  * @function generateToken
@@ -16,7 +15,7 @@ const generateToken = (data, time = 15) =>
       exp: Math.floor(Date.now() / 1000 + time * 60),
       ...data
     },
-    SECRET
+    Configuration.get(Keys.JWT_SECRET)
   )
 
 module.exports = generateToken
